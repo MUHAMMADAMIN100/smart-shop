@@ -17,7 +17,7 @@ export default function AdminOrders() {
     if (search) params.search = search;
     api.get<Order[]>('/orders/admin', { params }).then((r) => setOrders(r.data));
   };
-  useEffect(load, [status, search]);
+  useEffect(() => { load(); }, [status, search]);
 
   const setOrderStatus = async (id: string, s: OrderStatus) => {
     try {

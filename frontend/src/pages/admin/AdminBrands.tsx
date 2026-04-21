@@ -10,7 +10,7 @@ export default function AdminBrands() {
   const [logo, setLogo] = useState('');
 
   const load = () => api.get<Brand[]>('/brands').then((r) => setBrands(r.data));
-  useEffect(load, []);
+  useEffect(() => { load(); }, []);
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();

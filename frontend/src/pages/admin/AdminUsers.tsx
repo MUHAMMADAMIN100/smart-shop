@@ -19,7 +19,7 @@ export default function AdminUsers() {
   const [search, setSearch] = useState('');
 
   const load = () => api.get<U[]>('/admin/users', { params: search ? { search } : {} }).then((r) => setUsers(r.data));
-  useEffect(load, [search]);
+  useEffect(() => { load(); }, [search]);
 
   const toggleRole = async (u: U) => {
     const next: Role = u.role === 'ADMIN' ? 'USER' : 'ADMIN';
